@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>:::: CONDUSEF | Sistema de Registro de Prestadores de Servicios Financieros ::::</title>
+            <link href="imgs/favicon.ico" rel="shortcut icon">
+            <link href="css/main.css" rel="stylesheet">
+           
+                        <script src="js/jquery-3.6.0.js"></script>
+                         
+             <style>
+                .btnseccion,.btndetalle{
+                    cursor: pointer;
+                }
+                .btnseccion .glyphicon,.btndetalle .glyphicon{
+                    float: right;
+                }
+                .detalle, .seccion{
+                    display: none;
+                }
+                div.detalle div.col-sm-12{
+                    padding-left: 2em !important;
+                }
+                #div_generales{
+                    display: block;
+                }
+                .txtgreen, .txtred, .txtyellow{
+                    display: inline-block; 
+                    text-indent: 1em;
+                    vertical-align: middle;
+                }
+                .txtred{
+                    color: #cc0000;
+                }
+                .txtyellow{
+                    color: #FF6633;
+                }
+                div.parrafo{
+                    text-align: justify;
+                    padding: 0 .5em;
+                }
+                .typeahead form-control{
+                    height: 90px;
+                }
+                .breadcrumb{padding-top: 80px;padding-left:5px;margin-bottom:0px}
+                #imgloading{
+                    max-height: 100px;
+                }
+                .alert alert-warning warning-nav{
+                    margin-top: 5em !important;
+                }
+                .logoofi{
+                    max-height: 40px;
+                    margin: 0 1em;
+                }
+                .nombreif{
+                    font-weight: bold;
+                    color: #0F8AFC;
+                    font-size: 30px; 
+                    text-align: center;
+                    vertical-align: bottom;
+                    border: none;
+                    padding: 1em 0em 0em 0em;
+                }
+                #divlogo{
+                    text-align: center;
+                    border: 0px solid #ddd;
+                }
+                #logoins{
+                    max-height: 150px;
+                    max-width: 60vw;
+                    margin-bottom: 1em;
+                }
+                th,td{
+                    vertical-align: middle !important;
+                }
+                #index{
+                    padding: .7em;
+                }
+                .seccion{
+                    padding: 1em;
+                    border: 1px solid #ddd;
+                    
+                }
+                .seccion div.row div{
+                    border: 0px solid #ddd;
+                    padding: .3em .5em;
+                }
+                hr.red{
+                    margin: 1em 0;
+                }
+                .seccion hr{
+                    margin: 5px 0;
+                    padding: 0;
+                }
+                .divrel{
+                    font-style: italic;
+                    text-decoration: underline;
+                    color: #7B9CF1;
+                    cursor: pointer;
+                    margin-left: 1em;
+                    font-weight: bold;
+                }
+                .ulrel{
+                    margin-top: 1em;
+                    display: none;
+                    font-weight: normal;
+                    font-style: normal;
+                }
+                .lineadivision{
+                    height: 2px;
+                    background-color: #ddd;
+                }
+                .modal-dialog{
+                    width: 65vw;
+                }
+                #divnota, #divvalidada, #divnovalidada, #divnolocalizable{
+                    position: relative;
+                    text-align: center;
+                    border: 1px solid #e4e4e4;
+                    background-color: #F3F3F3;
+                    color: #FE642E;
+                }
+                #divvalidada{
+                    padding: .5em;
+                    color: #00B5C8;
+                }
+                #divnovalidada{
+                    padding: .5em;
+                    color: #00B5C8;
+                }
+                #iconolateral{
+                    width: 90px;
+                }
+                div .iconolateral,div .iconolateral-novalida, .iconolateral-validadav, .iconolateral-nolocalizable{
+                    width: 54px;
+                    height: 54px;
+                    border-radius: 20px 20px 20px 20px;
+                    -moz-border-radius: 20px 20px 20px 20px;
+                    -webkit-border-radius: 20px 20px 20px 20px;
+                    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+                    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+                    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+                    border: 0px solid #000000;
+                    background-color: #00B5C8;
+                    background-image: url("imgs/icon_validada_web.gif");
+                    background-position: center;
+                    background-repeat:  no-repeat;
+                    background-size: 40px 40px;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .iconolateral-novalida{
+                    background-color: #0e6870 !important;
+                    background-image: url("imgs/icon_validada_web.gif") !important;
+                }
+                .iconolateral-validadav{
+                    background-color: #162130 !important;
+                    background-image: url("imgs/icon_validada_web.gif") !important;
+                }
+                .iconolateral-nolocalizable{
+                    background-color: #e7456e !important;
+                    background-image: url("imgs/icon_validada_web.gif") !important;
+                }
+                .divtfun{
+                    padding:  1em;
+                    background-color: #ddd;
+                    color: #555;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                .modal-content{
+                    height: 70vh
+                }
+            
+                .copia-local{margin:8px 0 0;padding:8px 12px;background:#f7f4ef;border-left:4px solid #9d2449;font-size:13px;color:#333}
+                .copia-local a{color:#611232}
+                body{padding-bottom:40px}
+
+            </style>
+        </head>
+        <body>
+            <header>
+              <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMainCollapse">
+                      <span class="sr-only">Interruptor de Navegación</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand-logo" href="https://www.gob.mx/">
+                      <img src="imgs/logo_blanco.svg" alt="gob.mx">
+                    </a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="navbarMainCollapse">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="https://www.gob.mx/tramites">Trámites</a></li>
+                      <li><a href="https://www.gob.mx/gobierno">Gobierno</a></li>
+                      <li><a href="https://www.gob.mx/busqueda"><span class="sr-only">Búsqueda</span><i class="icon-search"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </header>
+
+            <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subenlaces">
+                    <span class="sr-only">Interruptor de Navegación</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="https://www.gob.mx/condusef">CONDUSEF</a>
+                </div>
+                <div class="collapse navbar-collapse" id="subenlaces">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#index">Inicio</a></li>
+                    <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp" id="openBtn" ><b>Soy una Entidad Financiera</b></a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contenido <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp#que_es">¿Qué es el SIPRES?</a></li>
+                        <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp#marcolegal">Marco Legal</a></li>
+                        <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp#pregfreq">Preguntas Frecuentes</a></li>
+                        <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp#glosario">Glosario</a></li>
+                        <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp#unes">Conoce las UNES</a></li>
+                        <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp#problema">¿Problemas con Institución Financiera?</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="http://www.condusef.gob.mx/gbmx/?p=contacto">Contacto</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="icon icon-home"></i></a></li>
+                    <li><a href="https://www.gob.mx/condusef" title="ir a la página principal de CONDUSEF">Comisi&oacute;n Nacional para Protecci&oacute;n y Defensa de los Usuarios de Servicios Financieros</a></li>
+                    <li><a href="https://webapps.condusef.gob.mx/SIPRES/jsp/pub/index.jsp" title="Ir a la búsqueda de instituciones">SIPRES</a></li>
+                    <li class="active">DATOS INSTITUCIONALES</li>
+                </ol>
+                <img src="imgs/logo_condusef.png" class="logoofi"/>
+                <img src="imgs/logo_sipres.jpg"  class="logoofi">
+                
+                <p class="copia-local">Copia local de la ficha pública de SIPRES, descargada el 24 de septiembre de 2026.
+                La consulta vigente está en
+                <a href="https://webapps.condusef.gob.mx/SIPRES/jsp/home_publico.jsp?idins=16863">CONDUSEF</a>.</p>
+
+                <div class="row" id="index">
+                    
+                    <div style="text-align: left;">
+                        <div id="divvalidada"><div class="iconolateral"></div><h4 class="txtgreen"><center>Fecha de última validación 07/09/2026</center></h4></div> 
+                    </div>
+                    <div class="nombreif">Conectemos Junto Contigo, S.A.P.I. de C.V., SOFOM, E.N.R.</div>
+                    <h3 class="btnseccion" title="Ocultar/Mostrar Sección" id="generales">Datos Generales &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h3>
+                    <hr class="red">
+                    <div class="seccion" id="div_generales">
+                        <div id="divlogo"><img src="imgs/logo_inst.png" id="logoins"></div>
+                        <div class="row">
+                            <div class="col-sm-2 "><b>Actualizados el  </b><hr/>25/04/2025</div>
+                            <div class="col-sm-3 "><b>Nombre corto</b><hr/>CONECTEMOS JUNTOS</div>
+                            <div class="col-sm-3 "><b>Estatus </b><hr/><b style=color:#45B600;>En operación</b> 09/12/2024</div>
+                            <div class="col-sm-2 "><b>RFC </b><hr/>CJC2405093L1</div>
+                            <div class="col-sm-2 "><b>Clave de Registro </b><hr/>696326</div>
+                        </div><div class="row">
+                            <div class="col-sm-4 "><b>Sector</b><hr/>Sociedades Financieras de Objeto Múltiple E.N.R.</div>
+                            <div class="col-sm-3 "><b>Supervisora </b><hr/>CONDUSEF</div>
+                            <div class="col-sm-2 "><b>Entidad </b><hr/>Nacional</div>
+                            <div class="col-sm-3 "><b>Inicio de operaciones </b><hr/>16/01/2025</div>
+                        </div><div class="row">    
+                            <div class="col-sm-5 "><b>Página WEB</b><hr/>Dato no capturado</div>
+                            <div class="col-sm-4 "><b>Correo electrónico </b><hr/><a href="mailto:contacto@conectemosjuntos.com" style="font-size: 12pt;">contacto@conectemosjuntos.com</a></div>
+                            <div class="col-sm-3 "><b>Alta en SIPRES</b><hr/>09/12/2024</div>
+                        
+
+                            
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-sm-12 "><b>Datos de contrato con SIC</b><hr/>Círculo de Crédito, S.A. de C.V., Sociedad de Información Crediticia, Vigencia: 06/12/2024 - Indefinido - Último cumplimiento: 07/09/2026</div>
+                        </div>
+                    
+                    </div>
+
+                        
+                    
+                    <h3 class="btnseccion" title="Ocultar/Mostrar Sección" id="domicilios">Domicilios (1) &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h3>
+                    <hr class="red">
+                    <div class="seccion" id="div_domicilios">
+                    <div class="row"><div class="col-sm-12"><div class="btndetalle" id="dom_51472"><b>Fiscal</b> - México &nbsp;-&nbsp; Actualizado el 10/11/2025<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div></div><div class="detalle" id="dt_dom_51472" ><div class="col-sm-12"><hr/><b>Ubicación y teléfono</b><br/><a href="https://www.google.com/maps/search/,Mariano Matamoros,413,5 de Mayo,Toluca,México,CONECTEMOS JUNTOS" target="_blank"><img src="imgs/icono_mapa.png" width="30" /></a> &nbsp; -  Teléfono (s)  (722) 54342904</div><div class="col-sm-12"><hr/><b>Dirección</b><br/>Mariano Matamoros 413 , Colonia 5 de Mayo, C.P. 50090, Toluca, México<br/>Entre Valentín Gomez Farias y Juan Álvarez, referencia Portón café</div> </div></div>
+                    </div>
+                    
+                    <h3 class="btnseccion" title="Ocultar/Mostrar Sección" id="escrituras">Escrituras (2) &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h3>
+                    <hr class="red">
+                    <div class="seccion" id="div_escrituras">
+                    <div class="row"><div class="col-sm-12"><div class="btndetalle" id="esc1_49698"><b>Cambio de funcionarios </b> &nbsp;-&nbsp; Núm. 7,725 &nbsp;-&nbsp; Actualizada el 09/12/2024<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div></div><div class="detalle" id="dt_esc1_49698"><div class="row"><div class="col-sm-12"><hr/><b>Escritura</b><br/>Número: 7,725 - Fecha: 28/10/2024</div><div class="col-sm-12"><hr/><b>Folio mercantil</b><br/>Número: 2024051049 - Fecha: 11/11/2024 - Nuevo León, Monterrey</div><div class="col-sm-12"><hr/><b>Fedatario </b><br/>Notario - Emilio Guízar Pereyra - Número: 81 - Nuevo León, Monterrey</div></div></div></div><br/><hr class="lineadivision" /><br/><div class="row"><div class="col-sm-12"><div class="btndetalle" id="esc2_49697"><b>Acta constitutiva</b> &nbsp;-&nbsp; Núm. 7,024 &nbsp;-&nbsp; Actualizada el 09/12/2024<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div></div><div class="detalle" id="dt_esc2_49697"><div class="row"><div class="col-sm-12"><hr/><b>Escritura</b><br/>Número: 7,024 - Fecha: 09/05/2024</div><div class="col-sm-12"><hr/><b>Folio mercantil</b><br/>Número: 2024051049 - Fecha: 03/06/2024 - Nuevo León, Monterrey</div><div class="col-sm-12"><hr/><b>Fedatario </b><br/>Notario - Emilio Guízar Pereyra - Número: 81 - Nuevo León, Monterrey</div><div class="col-sm-12"><hr/><b>Administración </b><br/>Tipo: Consejo de administración  - Duración sociedad: Indefinido - Duración cargo: Indefinido<br/>Capital mínimo: 50,000 - Capital variable: Ilimitado</div><div class="col-sm-12"><hr/><div class="table-responsive"><table class="table table-striped"><thead><tr><th>Objeto Social</th><th>Producto</th></tr></thead><tbody><tr><td>Arrendamiento</td><td>Arrendamiento Financiero</td></tr><tr><td>Crédito o Préstamo</td><td>Crédito al auto</td></tr><tr><td>Crédito o Préstamo</td><td>Crédito Hipotecario</td></tr><tr><td>Crédito o Préstamo</td><td>Crédito Personal</td></tr><tr><td>Crédito o Préstamo</td><td>Crédito Simple</td></tr><tr><td>Crédito o Préstamo</td><td>Crédito de Habilitación o Avío</td></tr><tr><td>Crédito o Préstamo</td><td>Créditos Refaccionarios</td></tr><tr><td>Factoraje</td><td>Factoraje Financiero</td></tr><tr><td>Crédito o Préstamo</td><td>Tarjeta de Crédito</td></tr><tr><td>Actuar como Fiduciaria</td><td>Actuar como Fiduciaria únicamente en fideicomisos de garantía</td></tr><tr><td>Compra-venta</td><td>Compra-venta</td></tr><tr><td>Crédito o Préstamo</td><td>Préstamo con Garantia</td></tr><tr><td>Crédito o Préstamo</td><td>Préstamo Personal</td></tr><tr><td>Crédito o Préstamo</td><td>Préstamos de habilitación y avío</td></tr><tr><td>Crédito o Préstamo</td><td>Préstamos Refaccionarios</td></tr></tbody></table></div></div></div></div></div>      
+                    </div>
+                    
+                    <h3 class="btnseccion" title="Ocultar/Mostrar Sección" id="funcionarios">Funcionarios (2) &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h3>
+                    <hr class="red">
+                    <div class="seccion" id="div_funcionarios">
+                        <div class="divtfun">CONSEJO DE ADMINISTRACIÓN</div><br/><div class="row"><div class="col-sm-12"><div class="btndetalle" id="fun1_52303"><b>Administrador único</b> &nbsp;-&nbsp; Farit Daniel Aguirre Gutiérrez &nbsp;-&nbsp; Actualizado el 09/12/2024<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div></div><div class="detalle" id="dt_fun1_52303"><div class="col-sm-12"><hr/><b>Nombre y correo</b><br/>Farit Daniel Aguirre Gutiérrez - conectemosjuntocontigo@gmail.com</div><div class="col-sm-12"><hr/><b>Poderes</b><br/><div class="table-responsive"><table class="table table-striped"><thead><tr><th>Escritura</th><th>Fedatario</th><th>Tipo poder</th><th>Poder</th></tr></thead><tbody><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para actos de administración</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para actos de dominio</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para asuntos laborales</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para otorgar, suscribir, avalar y en general negociar titulos de crédito en nombre de la sociedad</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para pleitos y cobranzas</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para sustituir poderes y sus facultades</td></tr></tbody></table></div></div></div></div><br/><hr class="lineadivision" /><br/><br/><div class="divtfun">FUNCIONARIOS</div><br/><div class="row"><div class="col-sm-12"><div class="btndetalle" id="fun2_39237"><b>Representante Legal</b> &nbsp;-&nbsp; Farit Daniel Aguirre Gutiérrez &nbsp;-&nbsp; Actualizado el 09/12/2024<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div></div><div class="detalle" id="dt_fun2_39237"><div class="col-sm-12"><hr/><b>Nombre y correo</b><br/>Farit Daniel Aguirre Gutiérrez - conectemosjuntocontigo@gmail.com</div><div class="col-sm-12"><hr/><b>Domicilio</b><br/>Orégano 144 , Praderas de Santo Domingo, C.P. 66436, San Nicolás de los Garza, Nuevo León<br/>Entre Ébano y Sauce, referencia Casa de dos pisos color blanco con portón negro, <br/>Teléfono:  81 8087 7368</div><div class="col-sm-12"><hr/><b>Poderes</b><br/><div class="table-responsive"><table class="table table-striped"><thead><tr><th>Escritura</th><th>Fedatario</th><th>Tipo poder</th><th>Poder</th></tr></thead><tbody><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para actos de administración</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para actos de dominio</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para asuntos laborales</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para otorgar, suscribir, avalar y en general negociar titulos de crédito en nombre de la sociedad</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para pleitos y cobranzas</td></tr><tr><td>7,725</td><td>Notario 81</td><td>Individual, General</td><td>Poder para sustituir poderes y sus facultades</td></tr></tbody></table></div></div></div></div>   
+                    </div>
+                    
+                    <h3 class="btnseccion" title="Ocultar/Mostrar Sección" id="oficios">Oficios (0) &nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h3>
+                    <hr class="red">
+                    <div class="seccion" id="div_oficios">
+                           
+                    </div>
+                </div>
+            </div>
+            <div id="mymodal" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        <iframe id="contenedor" style="border: none;"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            
+        
+            <footer class="main-footer">
+              <div class="container">
+                <div class="bottom-buffer-footer row">
+                  <div class="col-sm-3 logo-footer navbar-footer-logo">
+                    <img src="imgs/logo_blanco.svg" alt="gob.mx" class="logo_footer">
+                  </div>
+                  <div class="col-sm-3">
+                    <h5>Enlaces</h5>
+                    <ul class="nav-list">
+                      <li><a href="https://www.gob.mx/que-es-gobmx">¿Qué es gob.mx?</a></li>
+                      <li><a href="https://www.gob.mx/terminos">Términos y Condiciones</a></li>
+                      <li><a href="https://www.gob.mx/accesibilidad">Declaración de accesibilidad</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3">
+                    <h5>Síguenos en</h5>
+                    <ul class="list-inline">
+                      <li><a href="https://www.facebook.com/gobmexico"><img alt="Facebook" src="imgs/facebook.png"></a></li>
+                      <li><a href="https://twitter.com/GobiernoMX"><img alt="Twitter" src="imgs/twitter.png"></a></li>
+                      <li><a href="https://www.instagram.com/gobmexico/"><img alt="Instagram" src="imgs/instagram.png"></a></li>
+                      <li><a href="https://www.youtube.com/@gobiernodemexico"><img alt="Youtube" src="imgs/youtube.png"></a></li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-3">
+                    <a href="tel:079"><img src="imgs/079.png" alt="079" class="logo-079"></a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            $(function () {
+                $(".btnseccion").on("click", function () {
+                    $("#" + this.id + " .glyphicon").toggleClass("glyphicon-chevron-up glyphicon-chevron-down");
+                    $("#div_" + this.id).slideToggle();
+                });
+                $(".btndetalle").on("click", function () {
+                    $("#" + this.id + " .glyphicon").toggleClass("glyphicon-plus-sign glyphicon-minus-sign");
+                    $("#dt_" + this.id).slideToggle();
+                });
+            });
+        </script>
+        </body>
+    </html>
