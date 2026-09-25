@@ -1,0 +1,20 @@
+Copia local de la ficha pública SIPRES
+======================================
+
+Institución: Conectemos Junto Contigo, S.A.P.I. de C.V., SOFOM, E.N.R.
+Clave SIPRES: 16863
+Registro: 696326
+
+Fuente oficial:
+https://webapps.condusef.gob.mx/SIPRES/jsp/home_publico.jsp?idins=16863
+
+Descargada el 24 de septiembre de 2026.
+Incluye datos generales, domicilio, escrituras (con objeto social) y funcionarios,
+que en el sitio oficial se cargan al abrir cada apartado.
+
+Cómo abrir
+----------
+Doble clic en "Abrir Conectemos SIPRES.command"
+o abre index.html en Chrome.
+
+No sustituye la consulta oficial. Si CONDUSEF actualiza la ficha, esta copia no cambia.
